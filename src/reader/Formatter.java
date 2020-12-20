@@ -125,11 +125,17 @@ public  Term readTermFromFile(String filename){
 				for(int k = 0 ; k < matrix[i][j].length; k++)
 					matrix[i][j][k]=null;
 		for(Exam exam : solution.keySet()) {
-			
+			int sum=0;
 			List<Triplet> triplets = solution.get(exam);
-			for(Triplet t: triplets)
+			for(Triplet t: triplets) {
+				sum+=t.getClassroom().getCapacity();
 				matrix[t.getDay()][t.getTime().ordinal()][allClassrooms.indexOf(t.getClassroom())] = exam;
+			}
+			if(sum<exam.getStudentsNumber()) {
+				System.err.println("MANJE");
+			}
 		}
+			
 			System.out.println(solution);
 			try {
 				System.out.println("****************RESENJE************************");

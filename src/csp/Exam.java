@@ -58,7 +58,7 @@ public class Exam {
 	}
 	
 	
-	public boolean checkSameYearAndDepartment(Exam e) {
+	public boolean checkYearAndDepartment(Exam e) {
 		boolean flag=false;
 		for(String dept: availableOnDepartments) {
 			for(String dept2 : e.getAvailableOnDepartments()) {
@@ -69,7 +69,8 @@ public class Exam {
 		 if(flag) break;
 		}
 		
-		return flag &&  e.getGradeYear() == this.getGradeYear() ;
+		//return flag &&  e.getGradeYear() == this.getGradeYear() ;
+		return flag &&  Math.abs(e.getGradeYear() -this.getGradeYear() ) <=1;
 		
 	}
 	

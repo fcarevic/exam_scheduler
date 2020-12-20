@@ -24,6 +24,10 @@ public class BacktrackingFC {
 	public void initialize(Term term, List<Classroom> classrooms) {
 		long timestamp = TIMESTAMP++;
 		allExams= term.getExams();
+		allExams.sort((e1,e2)->{
+			
+			return e2.getStudentsNumber() - e1.getStudentsNumber();
+		});
 		for (Exam exam : term.getExams()) {
 			Domain domain = new Domain();
 			for (Classroom classroom : classrooms) {
@@ -57,7 +61,7 @@ public class BacktrackingFC {
 					domain.deleteTriplet(t);
 				}
 
-				if (exam.checkSameYearAndDepartment(e)) {
+				if (exam.checkYearAndDepartment(e)) {
 					int day = selectedTriplets.get(0).getDay();
 					domain.deleteByDay(day);
 				}
@@ -107,6 +111,28 @@ public class BacktrackingFC {
 		Domain domain = map.get(exam);
 		
 		List<List<Triplet>> allPosibilities= domain.getAllTriplets(exam.getStudentsNumber());
+		
+//		allPosibilities.sort((c1,c2)->{
+//			double sum1 =0;
+//			double sum2=0;
+//			for(Triplet t:c1) {
+//				sum1+= t.getClassroom().getNumberOfDutyProfessors();
+//				if(!t.getClassroom().isAtEtf()) {
+//					sum1+=1.2;
+//				}
+//			}
+//			for(Triplet t:c2) {
+//				sum2+= t.getClassroom().getNumberOfDutyProfessors();
+//				if(!t.getClassroom().isAtEtf()) {
+//					sum2+=1.2;
+//				}
+//			}
+//			
+//			if(sum1==sum2) return 0;
+//			return  sum1>sum2? -1:1;
+//		});
+		
+		
 		long timestamp = TIMESTAMP++;
 		for(List<Triplet> posibility : allPosibilities) {
 			if(checkConsistency(exam, posibility)) //does rollback also
