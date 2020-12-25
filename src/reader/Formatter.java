@@ -118,6 +118,12 @@ public  Term readTermFromFile(String filename){
 	
 	public void printToCSV(String filename, Map<Exam, List<Triplet>> solution, Term term , List<Classroom> allClassrooms) {
 		
+		for(Exam exam: term.getExams()) {
+			if(solution.get(exam) == null || solution.get(exam).isEmpty())
+				System.err.println("NIJE PRONASAO RESENJE ZA " + exam.getCode());
+			
+		}
+		
 		Exam matrix [][][] = new Exam[term.getDuration()][4][allClassrooms.size()];
 		
 		for(int i= 0 ; i < matrix.length; i++)
@@ -134,6 +140,7 @@ public  Term readTermFromFile(String filename){
 			if(sum<exam.getStudentsNumber()) {
 				System.err.println("MANJE");
 			}
+			
 		}
 			
 			System.out.println(solution);

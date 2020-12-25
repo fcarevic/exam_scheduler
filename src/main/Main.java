@@ -26,6 +26,7 @@ public class Main {
 		BacktrackingFC bfc = new BacktrackingFC();
 		bfc.initialize(term, allClassrooms);
 		bfc.fc_backtracking();
+		bfc.closeLogger();
 		Map<Exam, List<Triplet>> solution=bfc.getSolution();
 		f.printToCSV("resenja/resenje" + i + ".csv" , solution, term, allClassrooms);
 		}

@@ -85,14 +85,16 @@ public class Domain {
 	
 	
 	private void createAllPosibilities(int numberOfStudents, int i,  List<Triplet> list ,List<Triplet> triplets) {
-		if(i== triplets.size()) return;
-		if(numberOfStudents <= triplets.get(i).getClassroom().getCapacity()) {
-			list.add(triplets.get(i));
+		
+		if(numberOfStudents <= 0) {
 			allPosibilities.add(new ArrayList<Triplet>(list));
-			list.remove(triplets.get(i));
 			return;
 		}
-		if(i== triplets.size()-1) return;
+		
+		
+		if(i== triplets.size()) return;
+		
+		
 		
 		//List<Triplet> new_list = new ArrayList<Triplet>(list);
 		//new_list.add(triplets.get(i));
@@ -104,7 +106,7 @@ public class Domain {
 	
 	
  	public List<List<Triplet>> getAllTriplets(int numberOfStudents){
-	    	
+	    	allPosibilities.clear();
 		List<Triplet> temp = new ArrayList();
 		triplets.sort(new Comparator<Triplet>() {
 		@Override
@@ -137,6 +139,12 @@ public class Domain {
 		
 	
 	 return allPosibilities;
+	}
+
+	public void deleteByDayAndTime(int day, Time time) {
+		// TODO Auto-generated method stub
+		triplets.removeIf(l->l.getDay()==day && l.getTime()==time);
+		
 	}
 	
 	

@@ -58,13 +58,31 @@ public class Exam {
 	}
 	
 	
-	public boolean checkYearAndDepartment(Exam e) {
+	public boolean checkSameYearAndDepartment(Exam e) {
 		boolean flag=false;
 		for(String dept: availableOnDepartments) {
 			for(String dept2 : e.getAvailableOnDepartments()) {
-				if(dept.equals(dept2))
+				if(dept.equals(dept2)) {
 					flag=true;
 					break;
+				}
+			}
+		 if(flag) break;
+		}
+		
+		return flag &&  e.getGradeYear() == this.getGradeYear() ;
+		//return flag &&  Math.abs(e.getGradeYear() -this.getGradeYear() ) <=1;
+		
+	}
+	
+	public boolean checkSequentialYears(Exam e) {
+		boolean flag=false;
+		for(String dept: availableOnDepartments) {
+			for(String dept2 : e.getAvailableOnDepartments()) {
+				if(dept.equals(dept2)) {
+					flag=true;
+					break;
+				}
 			}
 		 if(flag) break;
 		}
@@ -75,7 +93,7 @@ public class Exam {
 	}
 	
 	public String toString() {
-		return name;
+		return code;
 		
 	}
 	public String getCode() {
