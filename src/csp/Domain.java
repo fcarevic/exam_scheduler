@@ -32,11 +32,25 @@ public class Domain {
 		return triplets.isEmpty();
 	}
 	
+	/**  
+	 *   cuva trenutni  domen u istoriji
+	 *   
+	 *   @param long key
+	 *  
+	 *  */
+	
 	public void begin_transaction(long timestamp) {
 		List<Triplet> to_save = new LinkedList<Triplet>(triplets);
 		history.put(timestamp, to_save);
 	}
 	
+	
+	/** 
+	 * restaurira domen iz istorije
+	 * 
+	 * @param long key
+	 * 
+	 * */
 	
 	public void rollback(long timestamp) {
 		if(history.get(timestamp)==null) return;
@@ -51,6 +65,13 @@ public class Domain {
 		triplets.removeIf(l->l.getDay()==day);
 		
 	}
+	
+	/** 
+	 * Fja proverava da li je moguce
+	 * zadovoljiti broj studenata sa preostalim vrednostima domena
+	 * 
+	 * @return boolean mogucnost
+	 * */
 	
 	public boolean  checkAvailable(int numberOfStudents) {
 		if( isEmpty()) return false;
@@ -83,6 +104,11 @@ public class Domain {
 		
 	} 
 	
+	/**
+	 *  Fja za pravljenje svih mogucih vrednosti trenutnog domena 
+	 *  koje ce uzeti promenljiva 
+	 *  
+	 *  */
 	
 	private void createAllPosibilities(int numberOfStudents, int i,  List<Triplet> list ,List<Triplet> triplets) {
 		
@@ -103,6 +129,13 @@ public class Domain {
 		createAllPosibilities(numberOfStudents - triplets.get(i).getClassroom().getCapacity(), i+1, list, triplets);
 		list.remove(triplets.get(i));
 	}
+	
+	/** 
+	 * fja za dohvatanje svih mogucih vrednosti koje promenljiva 
+	 * u tom trenutku moze uzeti
+	 * @param int numberofstudents Broj studenata prijavljenih na ispit
+	 * @return List<List<Triplet>> lista svih mogucih vrednosti promenljive
+	 *  */
 	
 	
  	public List<List<Triplet>> getAllTriplets(int numberOfStudents){

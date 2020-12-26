@@ -35,6 +35,11 @@ public class Formatter {
 	private  List<Classroom> listClassrooms;
 	private  List<Exam> listExams;
 		
+	/** 
+	 * Ucitavanje iz .json sala
+	 * 
+	 * @return List<Classroom> lista sala iz json
+	 * */
 	public  List<Classroom> readClassroomsFromFile(String filename){
 		
 		listClassrooms = new LinkedList<Classroom>();
@@ -72,6 +77,15 @@ public class Formatter {
 		
 	}
 	
+	
+	/**
+	 *  Ucitavanje roka iz json
+	 *  
+	 *  @return Term rok
+	 *  
+	 *  
+	 *  
+	 *  */
 	
 public  Term readTermFromFile(String filename){
 		Term term = new Term();
@@ -115,6 +129,15 @@ public  Term readTermFromFile(String filename){
 			  studentsNumber, requiresComputers, availableOnDepartments, code);
 	}
 	
+	
+	/** 
+	 * ispis resenja u csv formatu
+	 * 
+	 * @param solution Resenje
+	 * @param Term rok
+	 * @param allClassrooms sve ucionice
+	 * 
+	 * */
 	
 	public void printToCSV(String filename, Map<Exam, List<Triplet>> solution, Term term , List<Classroom> allClassrooms) {
 		

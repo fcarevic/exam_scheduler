@@ -31,6 +31,15 @@ public class StepWriter {
 			writer.write(message);
 		}
 		
+		/** 
+		 * ispis dodele sala, vremena i dana ispitu
+		 * 
+		 * @param Exam ispit
+		 * @param List<Triplet> vredosti
+		 * 
+		 * */
+		
+		
 		public void writeSolution(Exam exam, List<Triplet> addedValues ) throws IOException {
 			StringBuilder sb= new StringBuilder();
 			sb.append(exam.getCode()+ "  =   ");

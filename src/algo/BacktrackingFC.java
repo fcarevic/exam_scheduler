@@ -30,6 +30,12 @@ public class BacktrackingFC {
 	
 	private StepWriter stepWriter= new StepWriter();
 	
+	
+	/** 
+	 * fja za inicijalizaciju algoritma
+	 * 
+	 * */
+	
 	public void initialize(Term term, List<Classroom> classrooms) {
 		try {
 			stepWriter.init("log"+id+".txt");
@@ -62,7 +68,13 @@ public class BacktrackingFC {
 			map.put(exam, domain);
 		}
 	}
-
+  /**  
+   * 
+   *  FC consistency check fja za proveru konzistentnosti sa ostialim promenljivama i azuriranje njihovih domena
+   *  
+   *  @return boolean Da li je zadovoljena konzistencija
+   *  
+   *  */
 	private boolean checkConsistency(Exam exam, List<Triplet> selectedTriplets) {
 		long timestamp = TIMESTAMP++;
 		boolean rollback = false;
@@ -128,7 +140,12 @@ public class BacktrackingFC {
 		
 		
 	}
-
+  
+	/**
+	 * fja algoritma
+	 *  
+	 *  @return boolean Da li je pronadjeno resenje
+	 *  */
 	
 	
 	private boolean backtracking(int i) {
@@ -206,6 +223,11 @@ public class BacktrackingFC {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
 	public boolean fc_backtracking() {
 		return backtracking(0);
 	}

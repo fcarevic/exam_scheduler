@@ -57,6 +57,12 @@ public class Exam {
 		return availableOnDepartments;
 	}
 	
+	/** 
+	 * 
+	 * provera ogranicenja da li su ispiti na istom odsuku i iste godine
+	 * 
+	 * */
+	
 	
 	public boolean checkSameYearAndDepartment(Exam e) {
 		boolean flag=false;
@@ -74,6 +80,15 @@ public class Exam {
 		//return flag &&  Math.abs(e.getGradeYear() -this.getGradeYear() ) <=1;
 		
 	}
+	
+	
+	
+	/** 
+	 * Provera ogranicenja da li su ispiti na istom odseku u susednim godinama
+	 * 
+	 * 
+	 * 
+	 * */
 	
 	public boolean checkSequentialYears(Exam e) {
 		boolean flag=false;
